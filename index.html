@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url('https://i.pinimg.com/originals/7d/68/a4/7d68a425553c15f0edbddbc163d9c462.jpg'); /* Background Image */
+            background-image: url('https://i.pinimg.com/originals/7d/68/a4/7d68a425553c15f0edbddbc163d9c462.jpg');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -25,147 +25,180 @@
             font-size: 4rem;
             margin-bottom: 30px;
             text-align: center;
+            text-shadow: 0 0 20px black, 0 0 30px black;
             width: fit-content;
             padding: 20px;
             position: relative;
             z-index: 10;
-            line-height: 1.2;
-            color: #ed1c24; /* Saturated red */
-            animation: glowEffect 2s infinite;
-        }
-
-        @keyframes glowEffect {
-            0% {
-                text-shadow: 5px 5px 15px black, 0 0 25px #ed1c24, 0 0 50px #ed1c24;
-            }
-            50% {
-                text-shadow: 10px 10px 30px black, 0 0 40px #ed1c24, 0 0 80px #ed1c24;
-            }
-            100% {
-                text-shadow: 5px 5px 15px black, 0 0 25px #ed1c24, 0 0 50px #ed1c24;
-            }
+            background-image: url('https://www.hdwallpapers.in/download/big_and_small_hello_kitty_in_hello_kity_face_background_hd_hello_kitty-1920x1080.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
         }
 
         #clickable {
             font-size: 1.5rem;
-            color: #FF4040;
+            color: #ed519c;
             text-shadow: 1px 1px black;
             cursor: pointer;
             text-align: center;
             display: inline-block;
         }
 
-        .message-box {
+        .bubble {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
-            display: flex;
-            align-items: center;
-            background-image: url('https://storageciggallery.addons.business/15706/cig-cozy-gallery-8987bZI-10-26-NATL-Pumpkin-Day-Wallpaper-1500x2000-A-s.png?c=00');
-            background-size: cover;
-            background-position: center;
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            animation: popup 0.5s ease-out;
+            font-size: 20px;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInOut 2s forwards;
         }
 
-        @keyframes popup {
-            from {
-                transform: scale(0.8);
+        @keyframes fadeInOut {
+            0% {
                 opacity: 0;
             }
-            to {
-                transform: scale(1);
+            50% {
                 opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px);
             }
         }
 
-        .message-box span {
-            font-size: 1.2rem;
+        .kiss {
+            position: absolute;
+            font-size: 25px;
+            font-weight: bold;
+            opacity: 0;
+            color: #FF0000; /* Saturated red */
+            text-shadow: 2px 2px 5px black;
+            animation: kissEffect 1.5s forwards;
+        }
+
+        @keyframes kissEffect {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-50px);
+            }
+        }
+
+        #message-box {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-image: url('https://storageciggallery.addons.business/15706/cig-cozy-gallery-8987bZI-10-26-NATL-Pumpkin-Day-Wallpaper-1500x2000-A-s.png?c=00');
+            background-size: cover;
+            background-repeat: no-repeat;
             color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-size: 1rem;
             font-weight: bold;
-            text-shadow: 2px 2px 4px orange; /* Orange outline */
+            text-shadow: 1px 1px orange;
         }
 
-        .message-badge {
-            margin-left: 10px;
-            background-color: red;
-            color: white;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border-radius: 50%;
-            padding: 5px 10px;
-            display: inline-block;
-            text-align: center;
-            line-height: 1;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal {
+        #modal {
+            display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: white;
+            width: 80%;
+            background-image: url('https://pettech.co.uk/wp-content/uploads/2020/08/Hello-Kitty-Cat-Collection.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            display: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            width: 80%;
-            max-width: 400px;
-            text-align: center;
         }
 
-        .modal h2 {
-            font-size: 2rem;
+        #modal p {
+            font-size: 1.5rem;
             color: pink;
-            text-shadow: 2px 2px 4px black; /* Black outline */
-            margin-bottom: 20px;
+            text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
         }
 
-        .modal .close-btn {
+        #close-btn {
             position: absolute;
             top: 10px;
             right: 10px;
-            font-size: 1.5rem;
-            color: black;
+            background: black;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            padding: 5px 10px;
             cursor: pointer;
-            font-weight: bold;
+            border-radius: 3px;
         }
     </style>
 </head>
 <body>
     <h1>HAPPY BIRTHDAY BABY HEHEHEH</h1>
     <div id="clickable">click here >~<</div>
+    <div id="message-box">You have one message!</div>
 
-    <!-- Rectangle box -->
-    <div class="message-box" id="messageBox">
-        <span>You have one message!</span>
-        <div class="message-badge">1</div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="close-btn" id="closeModal">x</div>
-        <h2>Your message goes here!</h2>
+    <div id="modal">
+        <button id="close-btn">X</button>
+        <p>I love you so much and hope this birthday is the best yet!</p>
     </div>
 
     <script>
-        const messageBox = document.getElementById('messageBox');
+        const clickable = document.getElementById('clickable');
+        const messageBox = document.getElementById('message-box');
         const modal = document.getElementById('modal');
-        const closeModal = document.getElementById('closeModal');
+        const closeBtn = document.getElementById('close-btn');
 
-        // Open modal when the message box is clicked
+        // Generate kiss effect on click
+        clickable.addEventListener('click', () => {
+            for (let i = 0; i < 4; i++) {
+                createKissBubble();
+            }
+        });
+
+        function createKissBubble() {
+            const kiss = document.createElement('div');
+            kiss.classList.add('kiss');
+            kiss.textContent = 'kiss';
+            kiss.style.left = `${Math.random() * window.innerWidth}px`;
+            kiss.style.top = `${Math.random() * window.innerHeight}px`;
+            document.body.appendChild(kiss);
+            setTimeout(() => kiss.remove(), 1500);
+        }
+
+        // Open modal on message box click
         messageBox.addEventListener('click', () => {
             modal.style.display = 'block';
         });
 
-        // Close modal when the close button is clicked
-        closeModal.addEventListener('click', () => {
+        // Close modal
+        closeBtn.addEventListener('click', () => {
             modal.style.display = 'none';
+        });
+
+        // Ensure animations run properly on click
+        clickable.addEventListener('click', () => {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            bubble.textContent = '🎉';
+            bubble.style.left = `${Math.random() * window.innerWidth}px`;
+            bubble.style.top = `${Math.random() * window.innerHeight}px`;
+            document.body.appendChild(bubble);
+            setTimeout(() => bubble.remove(), 2000);
         });
     </script>
 </body>
