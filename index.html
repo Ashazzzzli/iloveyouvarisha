@@ -67,6 +67,7 @@
             padding: 10px 20px;
             border-radius: 5px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
             animation: popup 0.5s ease-out;
         }
 
@@ -85,6 +86,7 @@
             font-size: 1.2rem;
             color: black;
             font-weight: bold;
+            text-shadow: 2px 2px 4px orange; /* Orange outline */
         }
 
         .message-badge {
@@ -100,6 +102,39 @@
             line-height: 1;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .modal h2 {
+            font-size: 2rem;
+            color: pink;
+            text-shadow: 2px 2px 4px black; /* Black outline */
+            margin-bottom: 20px;
+        }
+
+        .modal .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -107,52 +142,31 @@
     <div id="clickable">click here >~<</div>
 
     <!-- Rectangle box -->
-    <div class="message-box">
+    <div class="message-box" id="messageBox">
         <span>You have one message!</span>
         <div class="message-badge">1</div>
     </div>
 
-    <script>
-        const clickable = document.getElementById('clickable');
-        const messages = [
-            "I love you so much",
-            "You're 17 now holy crap",
-            "HAPPY 17TH BIRTHDAY",
-            "GOD I LOVE YOU",
-            "You're so perfect",
-            "It's been more than a year since we met omg",
-            "We're getting old",
-            "A year closer to marrying you",
-            "I fucking love you so fucking much",
-            "Marry me",
-            "Kiss me",
-            "You're my everything",
-            "I'm so lucky to have you",
-            "You're the best",
-            "You're so gorgeous",
-            "My baby",
-            "You're so fucking amazing and perfect",
-            "I love you"
-        ];
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="close-btn" id="closeModal">x</div>
+        <h2>Your message goes here!</h2>
+    </div>
 
-        clickable.addEventListener('click', () => {
-            // Generate at least 4 kiss bubbles per click
-            for (let i = 0; i < 4; i++) {
-                createKissBubble();
-            }
+    <script>
+        const messageBox = document.getElementById('messageBox');
+        const modal = document.getElementById('modal');
+        const closeModal = document.getElementById('closeModal');
+
+        // Open modal when the message box is clicked
+        messageBox.addEventListener('click', () => {
+            modal.style.display = 'block';
         });
 
-        function createKissBubble() {
-            const kiss = document.createElement('div');
-            kiss.classList.add('kiss');
-            kiss.textContent = 'kiss';
-            kiss.style.left = `${Math.random() * window.innerWidth}px`;
-            kiss.style.top = `${Math.random() * window.innerHeight}px`;
-            kiss.style.color = '#ed1c24';
-            kiss.style.textShadow = '2px 2px 8px black';
-            document.body.appendChild(kiss);
-            setTimeout(() => kiss.remove(), 1500);
-        }
+        // Close modal when the close button is clicked
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
     </script>
 </body>
 </html>
