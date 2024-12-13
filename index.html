@@ -22,17 +22,16 @@
         }
 
         h1 {
-            font-size: 4rem; /* Larger font size */
+            font-size: 4rem;
             margin-bottom: 30px;
             text-align: center;
             width: fit-content;
             padding: 20px;
             position: relative;
             z-index: 10;
-            line-height: 1.2; /* Adjust line height for better spacing between characters */
-            color: #ed1c24; /* Saturated red for "Happy Birthday Baby" */
-            text-shadow: 5px 5px 15px black; /* Initial black glow */
-            animation: glowEffect 2s infinite; /* Animate the glow effect */
+            line-height: 1.2;
+            color: #ed1c24; /* Saturated red */
+            animation: glowEffect 2s infinite;
         }
 
         @keyframes glowEffect {
@@ -48,64 +47,70 @@
         }
 
         #clickable {
-            font-size: 1.5rem; /* Larger size for visibility */
-            color: #FF4040; /* Balanced red color */
-            text-shadow: 1px 1px black; /* Black stroke effect */
+            font-size: 1.5rem;
+            color: #FF4040;
+            text-shadow: 1px 1px black;
             cursor: pointer;
             text-align: center;
             display: inline-block;
         }
 
-        .bubble {
+        .message-box {
             position: absolute;
-            font-size: 20px;
-            font-weight: bold;
-            opacity: 0;
-            animation: fadeInOut 2s forwards;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            background-image: url('https://storageciggallery.addons.business/15706/cig-cozy-gallery-8987bZI-10-26-NATL-Pumpkin-Day-Wallpaper-1500x2000-A-s.png?c=00');
+            background-size: cover;
+            background-position: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            animation: popup 0.5s ease-out;
         }
 
-        @keyframes fadeInOut {
-            0% {
+        @keyframes popup {
+            from {
+                transform: scale(0.8);
                 opacity: 0;
             }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-        }
-
-        .kiss {
-            position: absolute;
-            font-size: 25px;
-            font-weight: bold;
-            opacity: 0;
-            animation: kissEffect 1.5s forwards;
-            color: #ed1c24; /* Saturated red color for the kiss bubble */
-            text-shadow: 2px 2px 8px black; /* Black glow around kiss */
-        }
-
-        @keyframes kissEffect {
-            0% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            50% {
-                opacity: 1;
+            to {
                 transform: scale(1);
+                opacity: 1;
             }
-            100% {
-                opacity: 0;
-                transform: scale(0.5) translateY(-50px);
-            }
+        }
+
+        .message-box span {
+            font-size: 1.2rem;
+            color: black;
+            font-weight: bold;
+        }
+
+        .message-badge {
+            margin-left: 10px;
+            background-color: red;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 50%;
+            padding: 5px 10px;
+            display: inline-block;
+            text-align: center;
+            line-height: 1;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 <body>
     <h1>HAPPY BIRTHDAY BABY HEHEHEH</h1>
     <div id="clickable">click here >~<</div>
+
+    <!-- Rectangle box -->
+    <div class="message-box">
+        <span>You have one message!</span>
+        <div class="message-badge">1</div>
+    </div>
 
     <script>
         const clickable = document.getElementById('clickable');
@@ -143,36 +148,11 @@
             kiss.textContent = 'kiss';
             kiss.style.left = `${Math.random() * window.innerWidth}px`;
             kiss.style.top = `${Math.random() * window.innerHeight}px`;
+            kiss.style.color = '#ed1c24';
+            kiss.style.textShadow = '2px 2px 8px black';
             document.body.appendChild(kiss);
             setTimeout(() => kiss.remove(), 1500);
         }
-
-        function createMessageBubble(text, color, strokeColor) {
-            const bubble = document.createElement('div');
-            bubble.classList.add('bubble');
-            bubble.textContent = text;
-            bubble.style.color = color;
-            bubble.style.textShadow = `2px 2px 4px ${strokeColor}`;
-            bubble.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
-            bubble.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
-            document.body.appendChild(bubble);
-            setTimeout(() => bubble.remove(), 2000);
-        }
-
-        function showMessageBubbles() {
-            const colors = ["#ed519c", "#000000"]; // Pink and black
-            const strokeColors = ["black", "#ca6d99"]; // Black stroke for pink and pink stroke for black
-
-            for (let i = 0; i < 8; i++) {
-                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-                const randomColor = colors[i % 2]; // Alternate between pink and black
-                const randomStrokeColor = strokeColors[i % 2]; // Alternate between black and pink stroke color
-                createMessageBubble(randomMessage, randomColor, randomStrokeColor);
-            }
-        }
-
-        // Show 8 message bubbles every 2 seconds after the page loads
-        setInterval(showMessageBubbles, 2000);
     </script>
 </body>
 </html>
